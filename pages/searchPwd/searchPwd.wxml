@@ -1,0 +1,9 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">密码查询</view>
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <van-field model:value="{{ phone }}" left-icon="user-o" placeholder="请输入用户名" error="{{ showError_phone }}" error-message="{{ errorMessage_phone }}" bindblur="checkPhone" required="true" />
+    </view>
+    <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
+  </view>
+</view>

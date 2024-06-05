@@ -1,0 +1,25 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">管理你的队伍</view>
+  
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold;">{{ name }}
+      </view>
+    </view>
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">领队：
+        <text wx:for="{{ leaderList }}" wx:key="index"> {{ item.nickName }} </text>
+      </view>
+    </view>
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">队员：
+        <text wx:for="{{ memberList }}" wx:key="index"> {{ item.nickName }} </text>
+      </view>
+      <view style="text-align: right;">
+        <van-button color="var(--primary-color)" size="small" icon="plus" type="info" bind:click="addMember">添加队员</van-button>
+      </view>
+    </view>
+    <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
+  </view>
+  <van-toast id="van-toast" />
+</view>

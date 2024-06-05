@@ -1,0 +1,21 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">创建你的新线路</view>
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <van-field model:value="{{ name }}" left-icon="flower-o" placeholder="为你的线路取个名" error="{{ showError_name }}" error-message="{{ errorMessage_name }}" bindblur="checkName" required="true" />
+    </view>
+    <view class="input" style="color: #ccc; font-size: 30rpx; text-align: left;">
+      可包含时间地点等关键信息，便于识别，也可自由发挥
+    </view>
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">领队：
+        <text wx:for="{{ leaderList }}" wx:key="index"> {{ item.nickName }} </text>
+      </view>
+      <view style="text-align: right;">
+        <van-button color="var(--primary-color)" size="small" icon="plus" type="info" bind:click="addLeader">添加领队</van-button>
+      </view>
+    </view>
+    <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
+  </view>
+  <van-toast id="van-toast" />
+</view>

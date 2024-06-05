@@ -1,0 +1,13 @@
+<view wx:if="{{ dataList.length === 0 }}" style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); text-align: center; margin: 200rpx 0;">暂无请求</view>
+<view wx:if="{{ dataList.length !== 0 }}">
+  <view wx:for="{{ dataList }}" wx:key="index">
+    <van-card title="{{ item.realName }} - {{ item.nickName }}" desc="{{ item.whatsup }}" centered>
+      <view slot="footer" style="display: flex; justify-content: flex-end;">
+        <view style="margin-right: 10rpx;">
+          <van-button type="info" color="var(--primary-color)" size="mini" round data-item="{{ item }}" bind:click="levelup">批准</van-button>
+        </view>
+        <van-button type="info" color="var(--primary-color)" size="mini" round plain data-item="{{ item }}" bind:click="refuseToLevelup">拒绝</van-button>
+      </view>
+    </van-card>
+  </view>
+</view>

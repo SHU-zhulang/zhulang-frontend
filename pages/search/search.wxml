@@ -1,0 +1,26 @@
+<view style="margin: 0 20rpx;">
+  <!-- <van-search model:value="{{ phone }}" label="用户名" placeholder="请输入用户名">
+  </van-search> -->
+  <!-- <van-search model:value="{{ realName }}" label="真名" placeholder="请输入真名">
+  </van-search> -->
+  <van-search model:value="{{ nickName }}" label="花名" placeholder="请输入花名">
+  </van-search>
+  <view style="margin: 30rpx 40rpx;">
+    <van-radio-group model:value="{{ gender }}" direction="horizontal">
+      <van-radio name="全部" checked-color="var(--primary-color)">全部</van-radio>
+      <van-radio name="女" checked-color="var(--primary-color)">美吕</van-radio>
+      <van-radio name="男" checked-color="var(--primary-color)">帅锅</van-radio>
+    </van-radio-group>
+  </view>
+  <van-button type="primary" color="var(--primary-color)" style="margin: 20rpx 0;" plain bind:click="getUser">搜索</van-button>
+</view>
+
+<view wx:if="{{ dataList.length === 0 }}" style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); text-align: center; margin: 200rpx 0;">无</view>
+<view wx:if="{{ dataList.length !== 0 }}">
+  <view wx:for="{{ dataList }}" wx:key="index">
+    <!-- <van-card title="{{ item.realName }} - {{ item.nickName }}" desc="{{ item.whatsup }}" centered>
+    </van-card> -->
+    <van-card title="{{ item.nickName }}" desc="{{ item.whatsup }}" centered>
+    </van-card>
+  </view>
+</view>

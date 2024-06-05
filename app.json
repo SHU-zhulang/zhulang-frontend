@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/signup/signup",
+    "pages/findPwd/findPwd",
+    "pages/myRoute/myRoute",
+    "pages/about/about",
+    "pages/search/search",
+    "pages/updatePersonalInfo/updatePersonalInfo",
+    "pages/searchLevelup/searchLevelup",
+    "pages/manageRoute/manageRoute",
+    "pages/createRoute/createRoute",
+    "pages/addMember/addMember",
+    "pages/manageTeam/manageTeam",
+    "pages/searchPwd/searchPwd"
+  ],
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#CFAFF9",
+    "backgroundColor": "white",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/myRoute/myRoute",
+        "text": "我的线路",
+        "iconPath": "./tabBarIcon/myRoute.png",
+        "selectedIconPath": "./tabBarIcon/myRoute-selected.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "个人信息",
+        "iconPath": "./tabBarIcon/about.png",
+        "selectedIconPath": "./tabBarIcon/about-selected.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "浪人图鉴",
+        "iconPath": "./tabBarIcon/search.png",
+        "selectedIconPath": "./tabBarIcon/search-selected.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-search": "@vant/weapp/search/index"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#CFAFF9",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "上大逐浪"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

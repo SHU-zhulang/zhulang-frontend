@@ -1,0 +1,32 @@
+<view style="margin: 100rpx 30rpx;">
+  <view style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); margin: 0 0 50rpx 20rpx;">{{ user.nickName }}</view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange">
+    <van-collapse-item title="我的真名" name="realName">
+      {{ user.realName }}
+    </van-collapse-item>
+    <van-collapse-item title="我的用户名" name="phone">
+      {{ user.phone }}
+    </van-collapse-item>
+    <van-collapse-item title="我的性别" name="gender">
+      {{ user.gender }}
+    </van-collapse-item>
+    <!-- <van-collapse-item title="我的邮箱" name="email">
+      {{ user.email }}
+    </van-collapse-item> -->
+    <van-collapse-item title="个性签名" name="whatsup">
+      {{ user.whatsup }}
+    </van-collapse-item>
+  </van-collapse>
+  <view style="margin: 20rpx 0;">
+    <van-button type="primary" round color="var(--primary-color)" bind:click="updatePersonalInfo">修改个人信息</van-button>
+    <van-button type="primary" round color="var(--primary-color)" bind:click="searchLevelup" wx:if="{{ user && user.role === 1 }}">查看账号升级申请</van-button>
+    <van-button type="primary" round color="var(--primary-color)" disabled wx:if="{{ user && user.role === 2 }}">账号已升至最高等级</van-button>
+    <van-button type="primary" round color="var(--primary-color)" bind:click="applyForLevelup" wx:if="{{ user && user.role === 3 }}">请求将账号升级为领队</van-button>
+    <van-button type="primary" round color="var(--primary-color)" disabled wx:if="{{ user && user.role === 4 }}">账号升级请求中</van-button>
+    <van-button type="primary" round color="var(--primary-color)" bind:click="searchPwd" wx:if="{{ user && (user.role === 1 || user.role === 2) }}">密码查询</van-button>
+    <van-button type="primary" round color="var(--primary-color)" bind:click="logout">退出登录</van-button>
+  </view>
+
+  <van-toast id="van-toast" />
+
+</view>

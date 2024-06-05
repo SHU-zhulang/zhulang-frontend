@@ -1,0 +1,15 @@
+<view style="margin: 10rpx;">
+  <van-button type="primary" color="var(--primary-color)" wx:if="{{ user.role === 1 || user.role === 2 }}" bind:click="manageRoute">管理线路</van-button>
+</view>
+
+<view wx:if="{{ dataList.length === 0 }}" style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); text-align: center; margin: 200rpx 0;">无</view>
+<view wx:if="{{ dataList.length !== 0 }}">
+  <view wx:for="{{ dataList }}" wx:key="index">
+    <van-card title="{{ item.name }}" centered>
+      <view slot="footer">
+        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" wx:if="{{ item.allocated === 0 }}" disabled>等待领队分配天使与主人</van-button>
+        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="myMaster" wx:if="{{ item.allocated === 1 }}">查看我的主人</van-button>
+      </view>
+    </van-card>
+  </view>
+</view>

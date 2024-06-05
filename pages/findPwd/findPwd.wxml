@@ -1,0 +1,21 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">找回密码</view>
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <van-field model:value="{{ phone }}" left-icon="user-o" placeholder="请输入用户名" error="{{ showError_phone }}" error-message="{{ errorMessage_phone }}" bindblur="checkPhone" required="true" />
+    </view>
+    <view class="input">
+      <van-field model:value="{{ email }}" left-icon="envelop-o" placeholder="请输入注册时的邮箱" error="{{ showError_email }}" error-message="{{ errorMessage_email }}" bindblur="checkEmail" required="true" />
+    </view>
+    <view class="input">
+      <van-field model:value="{{ password }}" left-icon="lock" placeholder="请重新设置密码" error="{{ showError_password }}" error-message="{{ errorMessage_password }}" bindblur="checkPassword" type="password" required="true" />
+    </view>
+    <view class="input">
+      <van-field model:value="{{ confirmPassword }}" left-icon="lock" placeholder="请确认密码" error="{{ showError_confirmPassword }}" error-message="{{ errorMessage_confirmPassword }}" bindblur="checkConfirmPassword" type="password" required="true" />
+    </view>
+    <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
+  </view>
+
+  <van-toast id="van-toast" />
+
+</view>

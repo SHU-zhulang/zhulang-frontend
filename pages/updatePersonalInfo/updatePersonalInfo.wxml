@@ -1,0 +1,33 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">修改个人信息</view>
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <van-field model:value="{{ realName }}" left-icon="star-o" placeholder="请输入你的真名" error="{{ showError_realName }}" error-message="{{ errorMessage_realName }}" bindblur="checkRealName" required="true" />
+    </view>
+    <view class="input">
+      <van-field model:value="{{ nickName }}" left-icon="star" placeholder="请输入你的花名" error="{{ showError_nickName }}" error-message="{{ errorMessage_nickName }}" bindblur="checkNickName" required="true" />
+    </view>
+    <view class="input">
+      <van-radio-group model:value="{{ gender }}" direction="horizontal">
+        <view style="margin: 20rpx 0;">
+          <van-radio name="女" checked-color="var(--primary-color)">美吕</van-radio>
+        </view>
+        <view style="margin: 20rpx 0;">
+          <van-radio name="男" checked-color="var(--primary-color)">帅锅</van-radio>
+        </view>
+      </van-radio-group>
+    </view>
+    <view class="input">
+      <!-- <van-field model:value="{{ email }}" left-icon="envelop-o" placeholder="请输入邮箱" error="{{ showError_email }}" error-message="{{ errorMessage_email }}" bindblur="checkEmail" required="true" /> -->
+      <view class="input">
+        <van-cell-group>
+          <van-field model:value="{{ whatsup }}" label="个性签名" type="textarea" placeholder="介绍一下自己吧！" autosize maxlength="100" />
+        </van-cell-group>
+      </view>
+      <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
+    </view>
+
+    <van-toast id="van-toast" />
+
+  </view>
+</view>

@@ -1,0 +1,98 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "%E4%B8%8A%E5%A4%A7%E9%80%90%E6%B5%AA%E5%B0%8F%E5%8A%A9%E6%89%8B",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "transfer",
+          "pathName": "pages/transfer/transfer",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "manageTeam",
+          "pathName": "pages/manageTeam/manageTeam",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "addMember",
+          "pathName": "pages/addMember/addMember",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "createRoute",
+          "pathName": "pages/createRoute/createRoute",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "manageRoute",
+          "pathName": "pages/manageRoute/manageRoute",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "searchLevelup",
+          "pathName": "pages/searchLevelup/searchLevelup",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "updatePersonalInfo",
+          "pathName": "pages/updatePersonalInfo/updatePersonalInfo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "about",
+          "pathName": "pages/about/about",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "myRoute",
+          "pathName": "pages/myRoute/myRoute",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "findPwd",
+          "pathName": "pages/findPwd/findPwd",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "signup",
+          "pathName": "pages/signup/signup",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
