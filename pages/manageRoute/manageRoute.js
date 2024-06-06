@@ -30,6 +30,13 @@ Page({
   },
   createTask(event){
     const item = event.currentTarget.dataset.item;
+    if(item.leader === item.member){
+      wx.showModal({
+        title: '创建天使与主人',
+        content: '请添加队员后再创建',
+      })
+      return;
+    }
     wx.showModal({
       title: "创建天使与主人",
       content: "创建时是否区分男女生",
