@@ -1,4 +1,5 @@
 import { request } from "../../request/index";
+import Toast from '@vant/weapp/toast/toast';
 
 Page({
   data: {
@@ -47,11 +48,16 @@ Page({
         method: "POST",
         data: data
       }).then(res => {
-        wx.showModal({
-          title: "密码查询",
-          content: this.data.phone + "的密码是" + res.data.password,
-          confirmColor: "#CFAFF9",
-        })
+        if(res.code === "0"){
+          wx.showModal({
+            title: "密码查询",
+            content: this.data.phone + "的密码是" + res.data.password,
+            confirmColor: "#CFAFF9",
+          })
+        }
+        else{
+          Toast(res.msg);
+        }
       })
     }
   }

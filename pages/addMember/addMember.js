@@ -50,13 +50,21 @@ Page({
     })
   },
   addMember(event){
-    if(app.globalData.searchType === 1){
-      const item = event.currentTarget.dataset.item;
+    const item = event.currentTarget.dataset.item;
+    if(item.uid === 1){
+      wx.showToast({
+        title: '超管不走线',
+        icon: 'error'
+      })
+      return;
+    }
+    if(app.globalData.searchType === 1){ 
       let t = wx.getStorageSync('currentRouteLeader');
       for(let i = 0; i < t.length; i++){
         if(item.uid === t[i].uid){
           wx.showToast({
             title: 'ta已被列为领队',
+            icon: 'error'
           })
           return;
         }
@@ -69,12 +77,12 @@ Page({
       })
     }
     else {
-      const item = event.currentTarget.dataset.item;
       let t = wx.getStorageSync('currentRouteMember');
       for(let i = 0; i < t.length; i++){
         if(item.uid === t[i].uid){
           wx.showToast({
             title: 'ta已被列为队员',
+            icon: 'error'
           })
           return;
         }

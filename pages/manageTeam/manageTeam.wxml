@@ -15,8 +15,15 @@
       <view style="color: var(--primary-color); font-weight: bold; text-align: left;">队员：
         <text wx:for="{{ memberList }}" wx:key="index"> {{ item.nickName }} </text>
       </view>
-      <view style="text-align: right;">
+      <view style="text-align: right; margin: 20rpx 0;">
         <van-button color="var(--primary-color)" size="small" icon="plus" type="info" bind:click="addMember">添加队员</van-button>
+        <van-button color="var(--primary-color)" size="small" icon="minus" type="info" bind:click="deleteMember" style="margin: 0 0 0 20rpx;">删除队员</van-button>
+      </view>
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">当前人数（含领队）：
+        <text> {{ memberNumber }}人 </text>
+      </view>
+      <view class="input" style="color: #ccc; font-size: 30rpx; text-align: left;">
+      添加/删除队员之后请务必点击“提交”按钮以保存更改内容，并重新发布天使与主人。
       </view>
     </view>
     <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>

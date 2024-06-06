@@ -1,0 +1,10 @@
+<view wx:if="{{ dataList.length === 0 }}" style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); text-align: center; margin: 200rpx 0;">无</view>
+<view wx:if="{{ dataList.length !== 0 }}">
+  <view wx:for="{{ dataList }}" wx:key="index">
+    <van-card title="{{ item.realName }} - {{ item.nickName }}" desc="{{ item.whatsup }}" centered>
+      <view slot="footer" style="display: flex; justify-content: flex-end;">
+        <van-button type="info" color="var(--primary-color)" size="mini" round data-item="{{ item }}" bind:click="deleteMember">将ta从队伍中删除</van-button>
+      </view>
+    </van-card>
+  </view>
+</view>

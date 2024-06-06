@@ -6,4 +6,7 @@
     </view>
     <van-button type="primary" color="var(--primary-color)" bind:click="confirm">提交</van-button>
   </view>
+
+  <van-toast id="van-toast" />
+
 </view>

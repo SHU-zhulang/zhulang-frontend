@@ -12,7 +12,8 @@
     "pages/createRoute/createRoute",
     "pages/addMember/addMember",
     "pages/manageTeam/manageTeam",
-    "pages/searchPwd/searchPwd"
+    "pages/searchPwd/searchPwd",
+    "pages/deleteMember/deleteMember"
   ],
   "tabBar": {
     "color": "#000",

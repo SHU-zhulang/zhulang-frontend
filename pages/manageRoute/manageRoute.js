@@ -125,12 +125,18 @@ Page({
             data: item
           }).then(res => {
             console.log(res);
-            if(res.code === "0"){
-              Toast("删除成功");
-              wx.switchTab({
-                url: '../myRoute/myRoute',
-              })
-            }
+            request({
+              url: "/task/delete",
+              method: "DELETE",
+              data: item
+            }).then(res => {
+              if(res.code === "0"){
+                Toast("删除成功");
+                wx.switchTab({
+                  url: '../myRoute/myRoute',
+                })
+              }
+            })
           })
         }
       }

@@ -5,10 +5,12 @@ Page({
     name: "",
     leaderList: [],
     memberList: [],
+    memberNumber: 0
   },
   onShow(){
     this.setData({
-      name: wx.getStorageSync('currentRoute').name
+      name: wx.getStorageSync('currentRoute').name,
+      memberNumber: app.countMember(wx.getStorageSync('currentRoute').member)
     });
     request({
       url: '/user/getByString',
@@ -45,6 +47,11 @@ Page({
     app.globalData.searchType = 2;
     wx.navigateTo({
       url: '../addMember/addMember',
+    })
+  },
+  deleteMember(){
+    wx.navigateTo({
+      url: '../deleteMember/deleteMember',
     })
   },
   confirm(){
