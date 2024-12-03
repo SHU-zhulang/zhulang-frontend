@@ -19,19 +19,16 @@
     <view class="input">
       <van-radio-group model:value="{{ gender }}" direction="horizontal">
         <view style="margin: 20rpx 0;">
-          <van-radio name="女" checked-color="var(--primary-color)">美吕</van-radio>
+          <van-radio name="女" checked-color="var(--primary-color)">女</van-radio>
         </view>
         <view style="margin: 20rpx 0;">
-          <van-radio name="男" checked-color="var(--primary-color)">帅锅</van-radio>
+          <van-radio name="男" checked-color="var(--primary-color)">男</van-radio>
         </view>
       </van-radio-group>
     </view>
     <view class="input" style="color: #ccc; font-size: 30rpx; text-align: left;">
       请如实填写性别，否则领队找不到你哦！
     </view>
-    <!-- <view class="input">
-      <van-field model:value="{{ email }}" left-icon="envelop-o" placeholder="请输入邮箱" error="{{ showError_email }}" error-message="{{ errorMessage_email }}" bindblur="checkEmail" required="true" />
-    </view> -->
     <view class="input">
       <van-cell-group>
         <van-field model:value="{{ whatsup }}" label="个性签名" type="textarea" placeholder="介绍一下自己吧！" autosize maxlength="100" />

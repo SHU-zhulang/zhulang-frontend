@@ -14,10 +14,6 @@ Page({
     gender: "",
     errorMessage_gender: "请选择性别",
 
-    email: "shengyuanbu@shu.edu.cn",
-		showError_email: false,
-    errorMessage_email: "",
-    
     whatsup: ""
   },
   onLoad() {
@@ -26,7 +22,6 @@ Page({
       realName: wx.getStorageSync('currentUser').realName,
       nickName: wx.getStorageSync('currentUser').nickName,
       gender: wx.getStorageSync('currentUser').gender,
-      email: wx.getStorageSync('currentUser').email,
       whatsup: wx.getStorageSync('currentUser').whatsup
     })
   },
@@ -74,39 +69,13 @@ Page({
       return true;
     }
   },
-  checkEmail(){
-    const email = this.data.email;
-    const emailPattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if(this.data.email === ""){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "你的邮箱不能为空"
-      })
-      return false;
-    }
-    else if(!emailPattern.test(email)){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "请输入正确的邮箱"
-      });
-      return false;
-    }
-    else{
-      this.setData({
-        showError_email: false,
-        errorMessage_email: ""
-      })
-      return true;
-    }
-  },
   confirm(){
-    if(this.checkRealName() && this.checkNickName() && this.checkGender() && this.checkEmail()){
+    if(this.checkRealName() && this.checkNickName() && this.checkGender()){
       let data = {
         phone: wx.getStorageSync('currentUser').phone,
         realName: this.data.realName,
         nickName: this.data.nickName,
         gender: this.data.gender,
-        email: this.data.email,
         whatsup: this.data.whatsup.trim()
       };
       request({

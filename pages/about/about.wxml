@@ -10,9 +10,6 @@
     <van-collapse-item title="我的性别" name="gender">
       {{ user.gender }}
     </van-collapse-item>
-    <!-- <van-collapse-item title="我的邮箱" name="email">
-      {{ user.email }}
-    </van-collapse-item> -->
     <van-collapse-item title="个性签名" name="whatsup">
       {{ user.whatsup }}
     </van-collapse-item>

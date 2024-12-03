@@ -1,0 +1,5 @@
+.containerForWritePeople{
+  margin: 30rpx 20rpx;
+  padding: 5rpx 0;
+  text-align: center;
+}

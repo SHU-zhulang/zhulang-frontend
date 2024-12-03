@@ -14,7 +14,10 @@
         <view style="margin-right: 10rpx;">
           <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="manageTeam">管理队伍</van-button>
         </view>
-        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="deleteTeam">删除队伍</van-button>
+        <view style="margin-right: 10rpx;">
+          <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="deleteTeam">删除队伍</van-button>
+        </view>
+        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="managePeople">人物贴收集</van-button>
       </view>
     </van-card>
   </view>

@@ -1,0 +1,42 @@
+<view class="container">
+  <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">人物贴收集</view>
+
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold;">{{ curRoute.name }}
+      </view>
+    </view>
+
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">本线路人数：
+        <text> {{ memberNumber }}人 </text>
+      </view>
+    </view>
+
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">已提交人数：
+        <text> {{ peopleSubmitted.length }}人 </text>
+      </view>
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">
+        <text wx:for="{{ memberSubmitted }}" wx:key="index"> {{ item.nickName }} </text>
+      </view>
+    </view>
+
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">未提交人数：
+        <text> {{ memberNumber - peopleSubmitted.length }}人 </text>
+      </view>
+      <view style="color: var(--primary-color); font-weight: bold; text-align: left;">
+        <text wx:for="{{ memberNotSubmitted }}" wx:key="index"> {{ item.nickName }} </text>
+      </view>
+    </view>
+
+    <van-button type="primary" color="var(--primary-color)" bind:click="export">打包导出</van-button>
+
+    <view wx:if="{{ isLinkShow }}" class="input" style="color: #ccc; font-size: 30rpx; text-align: left;">
+      复制下方链接，在浏览器打开以下载
+    </view>
+    <van-field wx:if="{{ isLinkShow }}" model:value="{{ downloadLink }}" autosize type="textarea"/>
+
+  </view>
+</view>

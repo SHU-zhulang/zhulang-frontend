@@ -14,10 +14,6 @@ Page({
     confirmPassword: "",
 		showError_confirmPassword: false,
     errorMessage_confirmPassword: "",
-
-    email: "",
-		showError_email: false,
-    errorMessage_email: "",
   },
   checkPhone() {
     const phone = this.data.phone;
@@ -84,36 +80,11 @@ Page({
       return true;
     }
   },
-  checkEmail(){
-    const email = this.data.email;
-    const emailPattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if(this.data.email === ""){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "你的邮箱不能为空"
-      })
-      return false;
-    }
-    else if(!emailPattern.test(email)){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "请输入正确的邮箱"
-      });
-      return false;
-    }
-    else{
-      this.setData({
-        showError_email: false,
-        errorMessage_email: ""
-      })
-      return true;
-    }
-  },
+
   confirm(){
-    if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword() && this.checkEmail()){
+    if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword()){
       let data = {
         phone: this.data.phone,
-        email: this.data.email,
         password: this.data.password
       };
       request({

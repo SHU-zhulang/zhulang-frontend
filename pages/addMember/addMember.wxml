@@ -8,8 +8,8 @@
   <view style="margin: 30rpx 40rpx;">
     <van-radio-group model:value="{{ gender }}" direction="horizontal">
       <van-radio name="全部" checked-color="var(--primary-color)">全部</van-radio>
-      <van-radio name="女" checked-color="var(--primary-color)">美吕</van-radio>
-      <van-radio name="男" checked-color="var(--primary-color)">帅锅</van-radio>
+      <van-radio name="女" checked-color="var(--primary-color)">男</van-radio>
+      <van-radio name="男" checked-color="var(--primary-color)">女</van-radio>
     </van-radio-group>
   </view>
   <van-button type="primary" color="var(--primary-color)" style="margin: 20rpx 0;" plain bind:click="getUser">搜索</van-button>

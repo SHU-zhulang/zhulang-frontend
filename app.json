@@ -13,7 +13,9 @@
     "pages/addMember/addMember",
     "pages/manageTeam/manageTeam",
     "pages/searchPwd/searchPwd",
-    "pages/deleteMember/deleteMember"
+    "pages/deleteMember/deleteMember",
+    "pages/managePeople/managePeople",
+    "pages/writePeople/writePeople"
   ],
   "tabBar": {
     "color": "#000",
@@ -50,7 +52,8 @@
     "van-collapse": "@vant/weapp/collapse/index",
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-card": "@vant/weapp/card/index",
-    "van-search": "@vant/weapp/search/index"
+    "van-search": "@vant/weapp/search/index",
+    "van-uploader": "@vant/weapp/uploader/index"
   },
   "window": {
     "navigationBarBackgroundColor": "#CFAFF9",

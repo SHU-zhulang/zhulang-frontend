@@ -148,5 +148,12 @@ Page({
         }
       }
     })
+  },
+  managePeople(event){
+    const item = event.currentTarget.dataset.item;
+    wx.setStorageSync('currentRoute', item);
+    wx.navigateTo({
+      url: '../managePeople/managePeople',
+    })
   }
 })

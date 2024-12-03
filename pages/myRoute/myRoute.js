@@ -44,5 +44,12 @@ Page({
     wx.navigateTo({
       url: '../manageRoute/manageRoute',
     })
+  },
+  writePeople(event){
+    const item = event.currentTarget.dataset.item;
+    wx.setStorageSync('currentRoute', item);
+    wx.navigateTo({
+      url: '../writePeople/writePeople',
+    })
   }
 })

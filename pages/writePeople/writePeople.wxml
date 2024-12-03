@@ -1,0 +1,23 @@
+<view class="containerForWritePeople">
+  <view style="font-size: 60rpx; font-weight: bold; color: var(--primary-color);">写人物贴</view>
+
+  <view style="margin: 30rpx 0;">
+    <view class="input">
+      <view style="color: var(--primary-color); font-weight: bold;">{{ curRoute.name }}
+      </view>
+    </view>
+
+    <van-uploader file-list="{{ photoList }}" multiple preview-full-image="{{ false }}" bind:after-read="afterRead"/>
+    <view style="color: #7A7A7A; font-size: 25rpx; margin-bottom: 20rpx;">上传一张你的照片</view>
+    <view class="input" style="color: #ccc; font-size: 30rpx;">
+      照片和名字为必填哦
+    </view>
+    <van-cell-group inset>
+      <van-field label="你的名字" placeholder="想在人物贴中使用的名字" model:value="{{ nickName }}" required="true" />
+      <van-field autosize label="大家" type="textarea" placeholder="想对这条线/大家说的话" model:value="{{ self }}" />
+      <van-field wx:for="{{ allMember }}" wx:key="index" data-index="{{ index }}" autosize label="{{ item.nickName }}" type="textarea" placeholder="想对{{ item.nickName }}说的话" bindinput="onInput" value="{{ item.people }}" />
+    </van-cell-group>
+    <van-button type="primary" color="var(--primary-color)" bind:click="save" style="margin-bottom: 10rpx;">提交保存</van-button>
+    <van-toast id="van-toast" />
+  </view>
+</view>

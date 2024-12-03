@@ -1,4 +1,5 @@
 // 同时发送异步请求的次数
+const app = getApp();
 let ajaxTimes = 0;
 export const request = (params) => {
   ajaxTimes ++;
@@ -7,14 +8,10 @@ export const request = (params) => {
     mask: true
   })
 
-  // 后台的请求地址
-  // const baseUrl = 'http://localhost:9090';
-  const baseUrl = 'https://www.zhulang.online:8080';
-
   return new Promise((resolve, reject) => {
     wx.request({
       ...params,
-      url: baseUrl + params.url,
+      url: app.globalData.baseUrl + params.url,
       success: (result) => {
         resolve(result.data);
       },

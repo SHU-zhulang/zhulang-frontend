@@ -40,7 +40,6 @@ Page({
         realName: "",
         nickName: "",
         gender: "",
-        email: "",
         whatsup: ""
       };
       request({

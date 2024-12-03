@@ -115,7 +115,7 @@ function equal(value1, value2) {
             this.emitChange(value);
             this.$emit('blur', __assign(__assign({}, event.detail), { value: value }));
         },
-        // filter illegal characters
+        // filter illegal peoples
         filter: function (value) {
             value = String(value).replace(/[^0-9.-]/g, '');
             if (this.data.integer && value.indexOf('.') !== -1) {

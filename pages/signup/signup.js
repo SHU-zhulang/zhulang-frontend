@@ -25,11 +25,7 @@ Page({
     
     gender: "",
     errorMessage_gender: "请选择性别",
-    
-    email: "shengyuanbu@shu.edu.cn",
-		showError_email: false,
-    errorMessage_email: "",
-    
+
     whatsup: ""
   },
   checkPhone() {
@@ -141,40 +137,14 @@ Page({
       return true;
     }
   },
-  checkEmail(){
-    const email = this.data.email;
-    const emailPattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if(this.data.email === ""){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "你的邮箱不能为空"
-      })
-      return false;
-    }
-    else if(!emailPattern.test(email)){
-      this.setData({
-        showError_email: true,
-        errorMessage_email: "请输入正确的邮箱"
-      });
-      return false;
-    }
-    else{
-      this.setData({
-        showError_email: false,
-        errorMessage_email: ""
-      })
-      return true;
-    }
-  },
   confirm(){
-    if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword() && this.checkRealName() && this.checkNickName() && this.checkGender() && this.checkEmail()){
+    if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword() && this.checkRealName() && this.checkNickName() && this.checkGender()){
       let data = {
         phone: this.data.phone,
         password: this.data.password,
         realName: this.data.realName,
         nickName: this.data.nickName,
         gender: this.data.gender,
-        email: this.data.email,
         whatsup: this.data.whatsup.trim()
       };
       request({
