@@ -3,3 +3,17 @@
   padding: 5rpx 0;
   text-align: center;
 }
+
+.word-counter-fixed {
+  position: fixed;
+  left: 0;
+  bottom: 40rpx;
+  width: 100vw;
+  background: rgba(255,255,255,0.95);
+  color: var(--primary-color);
+  font-size: 28rpx;
+  text-align: center;
+  z-index: 999;
+  padding: 12rpx 0;
+  box-shadow: 0 -2rpx 8rpx #eee;
+}

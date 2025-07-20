@@ -27,9 +27,19 @@ Page({
     self: "",
 
     // 是否正在上传照片
-    isUploading: false
+    isUploading: false,
+
+    // 是否做出了更新
+    isUpdated: false,
+    totalWords: 0,
+    autoSaveTimer: null,
+    headImageUploaded: false
   },
   async onShow() {
+    console.log("isUpdated: ", this.data.isUpdated)
+    if(this.data.isUpdated){
+      return;
+    }
     // 初始化数据
     this.setData({
       curRoute: wx.getStorageSync('currentRoute'),
@@ -72,39 +82,155 @@ Page({
       am.data.forEach(m => {
         m["people"] = content.find(p => p.uid === m.uid)?.people || ""
       });
-      if (!this.data.isUploading) {
+      if (!this.data.isUploading && (!this.data.photoList || this.data.photoList.length === 0)) {
+        // 先清空photoList，避免van-uploader diff递归
+        this.setData({ photoList: [] });
         const curPhoto = [];
-        curPhoto.push({
-          fileType: "image",
-          url: curPeople.data[0].photo,
-          type: "image"
-        })
-        console.log(curPhoto)
+        let photoUrl = curPeople.data[0].photo;
+        if (photoUrl && !/^https?:\/\//.test(photoUrl)) {
+          photoUrl = app.globalData.baseUrl + photoUrl;
+        }
+        if (photoUrl) {
+          curPhoto.push({
+            url: photoUrl,
+            name: '人物贴照片',
+            type: 'image'
+          });
+        }
         this.setData({
           photoList: curPhoto,
-        })
+        });
       }
       this.setData({
         curUrl: curPeople.data[0].photo,
         nickName: curPeople.data[0].nickName,
-        self: curPeople.data[0].self
+        self: curPeople.data[0].self,
+        headImageUploaded: !!curPeople.data[0].photo // 只要有图片就显示上传成功
       })
     }
     this.setData({
       allMember: am.data
     })
+    this.updateTotalWords();
+    // 启动30秒自动保存
+    this.startAutoSave();
+    // 离开页面前拦截
   },
+  onHide() {
+    // 页面隐藏时自动保存
+    if (this.data.isUpdated) {
+      this.autoSave();
+    }
+    // 清除定时器
+    this.clearAutoSave();
+  },
+  onUnload() {
+    // 页面卸载时自动保存
+    if (this.data.isUpdated) {
+      this.autoSave();
+    }
+    // 清除定时器
+    this.clearAutoSave();
+  },
+  startAutoSave() {
+    // 清除之前的定时器
+    this.clearAutoSave();
+    // 启动30秒自动保存
+    this.data.autoSaveTimer = setInterval(() => {
+      if (this.data.isUpdated) {
+        this.autoSave();
+      }
+    }, 30000); // 30秒
+  },
+  clearAutoSave() {
+    if (this.data.autoSaveTimer) {
+      clearInterval(this.data.autoSaveTimer);
+      this.data.autoSaveTimer = null;
+    }
+  },
+  async autoSave() {
+    // 自动保存，不显示提示，不跳转页面
+    if (this.data.photoList.length === 0 || this.data.nickName === "") {
+      return; // 必填项未完成时不保存
+    }
+    
+    try {
+      // 若上传了新照片，则上传照片到服务器
+      if (this.data.isUploading) {
+        const uploadImage = () => {
+          return new Promise((resolve, reject) => {
+            wx.uploadFile({
+              filePath: this.data.photoList[0].url,
+              name: "photo",
+              url: app.globalData.baseUrl + '/people/photo',
+              formData: {
+                uid: this.data.curUser.uid
+              },
+              success(res) {
+                resolve(res);
+              },
+              fail(err) {
+                reject(err);
+              }
+            })
+          })
+        }
+        const res = await uploadImage();
+        this.setData({
+          curUrl: JSON.parse(res.data).data
+        })
+      }
 
-  afterRead(event) {
-    console.log(event)
-    const {
-      file
-    } = event.detail;
-    console.log(file);
-    // 预览新图片
-    this.setData({
-      photoList: file,
-      isUploading: true
+      // 形成content内容
+      const curChange = this.data.allMember;
+      const content = curChange.map(({uid, people}) => ({uid, people}));
+      const contentString = JSON.stringify(content);
+
+      // 构建请求体
+      let people = {
+        routeId: this.data.curRoute.id,
+        memberId: this.data.curUser.uid,
+        nickName: this.data.nickName,
+        photo: this.data.curUrl,
+        self: this.data.self,
+        content: contentString
+      }
+
+      // 发起请求
+      await request({
+        url: '/people/save',
+        method: 'POST',
+        data: people
+      });
+      
+      this.data.isUpdated = false;
+      console.log('自动保存成功');
+    } catch (error) {
+      console.error('自动保存失败:', error);
+    }
+  },
+  uploadImage() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        wx.uploadFile({
+          filePath: res.tempFilePaths[0],
+          name: "photo",
+          url: app.globalData.baseUrl + '/people/photo',
+          formData: {
+            uid: this.data.curUser.uid
+          },
+          success: (uploadRes) => {
+            const url = JSON.parse(uploadRes.data).data;
+            this.setData({
+              curUrl: url,
+              headImageUploaded: true
+            });
+          }
+        })
+      }
     })
   },
 
@@ -121,11 +247,34 @@ Page({
     this.setData({
       allMember: curChange
     });
+
+    // 人物贴已更新
+    this.data.isUpdated = true
+    this.updateTotalWords();
+  },
+
+  onInput2(event){
+    // 人物贴已更新
+    this.data.isUpdated = true
+    this.updateTotalWords();
+  },
+
+  updateTotalWords() {
+    let total = 0;
+    // 统计self和nickName
+    total += (this.data.self ? this.data.self.length : 0);
+    total += (this.data.nickName ? this.data.nickName.length : 0);
+    // 统计allMember[*].people
+    if (this.data.allMember && this.data.allMember.length > 0) {
+      this.data.allMember.forEach(m => {
+        if (m.people) total += m.people.length;
+      });
+    }
+    this.setData({ totalWords: total });
   },
 
   async save() {
-    console.log(this.data.photoList)
-    if(this.data.photoList.length === 0){
+    if (!this.data.curUrl) {
       Toast('请上传照片哦');
       return;
     }
@@ -142,6 +291,9 @@ Page({
             filePath: this.data.photoList[0].url,
             name: "photo", // 后端接收参数的名字
             url: app.globalData.baseUrl + '/people/photo',
+            formData: {
+              uid: this.data.curUser.uid
+            },
             success(res) {
               resolve(res); // 成功时调用 resolve
             },
@@ -193,5 +345,8 @@ Page({
         url: '../myRoute/myRoute',
       });
     }, 1000);
+    this.data.isUpdated = false;
+    this.data.isUploading = false;
+    this.clearAutoSave();
   }
 })

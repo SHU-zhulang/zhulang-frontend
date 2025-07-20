@@ -1,6 +1,8 @@
 <view class="container">
   <view style="font-size: 40rpx; font-weight: bold; color: var(--primary-color);">人物贴收集</view>
-
+  <view style="color: #ccc; font-size: 26rpx; text-align: left; margin: 20px 0;">
+    小程序打包导出，一定在<text style="color: red;">电脑</text>上操作，在电脑上登录微信然后进小程序，点击打包导出后，一直加载中是正常的，请耐心等待一段时间。
+  </view>
   <view style="margin: 30rpx 0;">
     <view class="input">
       <view style="color: var(--primary-color); font-weight: bold;">{{ curRoute.name }}

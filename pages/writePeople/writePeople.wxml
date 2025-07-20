@@ -7,17 +7,34 @@
       </view>
     </view>
 
-    <van-uploader file-list="{{ photoList }}" multiple preview-full-image="{{ false }}" bind:after-read="afterRead"/>
-    <view style="color: #7A7A7A; font-size: 25rpx; margin-bottom: 20rpx;">上传一张你的照片</view>
+    <!-- 图片上传按钮及提示 -->
+    <view class="input" style="text-align: center;">
+      <image src="{{headImageUploaded ? '/images/kidaha-01.svg' : '/images/kidaha-11.svg'}}" style="width: 50px; height: 50px; margin: 5px auto; display: block;" mode="aspectFit"/>
+      <text style="color: var(--primary-color); font-size: 25rpx; font-weight: bold;">
+        {{headImageUploaded ? '你的靓照已C位出道，想换就再传一张吧！' : '你的人物贴还缺一张靓照哦～'}}
+      </text>
+      <view style="width: 60%; margin: 25rpx auto 10rpx auto;">
+        <van-button type="primary" color="var(--primary-color)" block bindtap="uploadImage">上传一张你的美照</van-button>
+      </view>
+    </view>
     <view class="input" style="color: #ccc; font-size: 30rpx;">
       照片和名字为必填哦
     </view>
     <van-cell-group inset>
-      <van-field label="你的名字" placeholder="想在人物贴中使用的名字" model:value="{{ nickName }}" required="true" />
-      <van-field autosize label="大家" type="textarea" placeholder="想对这条线/大家说的话" model:value="{{ self }}" />
+      <van-field autosize type="textarea" placeholder="可将备忘录上的内容整个复制到此处再粘贴" />
+      <van-field label="你的名字" placeholder="想在人物贴中使用的名字" bindinput="onInput2" model:value="{{ nickName }}" required="true" />
+      <van-field autosize label="大家" type="textarea" placeholder="想对这条线/大家说的话" bindinput="onInput2" model:value="{{ self }}" />
       <van-field wx:for="{{ allMember }}" wx:key="index" data-index="{{ index }}" autosize label="{{ item.nickName }}" type="textarea" placeholder="想对{{ item.nickName }}说的话" bindinput="onInput" value="{{ item.people }}" />
     </van-cell-group>
+    <view class="input" style="color: #ccc; font-size: 30rpx; text-align: left;">
+      退出前请务必记得点击下方“提交保存”！！！！！
+    </view>
     <van-button type="primary" color="var(--primary-color)" bind:click="save" style="margin-bottom: 10rpx;">提交保存</van-button>
     <van-toast id="van-toast" />
+    <view style="height: 110rpx;"></view>
   </view>
+</view>
+
+<view class="word-counter-fixed">
+  <text style="font-weight: bold;">当前已写字数：{{totalWords}}，多写一点，回忆更精彩！</text>
 </view>

@@ -1,7 +1,7 @@
 App({
   globalData: {
     // 后台的请求地址
-    // baseUrl: 'http://localhost:9090',
+    // baseUrl: 'http://192.168.31.104:9090',
     baseUrl: 'https://www.zhulang.online:8080',
 
      // 默认设置为0，从createRoute进入addMember时设置为1

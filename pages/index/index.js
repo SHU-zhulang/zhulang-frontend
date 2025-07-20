@@ -86,6 +86,16 @@ Page({
       url: '../findPwd/findPwd',
     })
   },
+  searchPwd(){
+    wx.navigateTo({
+      url: '../searchPwd/searchPwd',
+    })
+  },
+  onPasswordInput(e) {
+    this.setData({
+      password: e.detail
+    });
+  },
   onShareAppMessage: function () {
     return {
       title: '上大逐浪小助手'

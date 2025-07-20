@@ -10,7 +10,7 @@ Page({
     password: "",
     showError_password: false,
     errorMessage_password: "",
-
+    
     confirmPassword: "",
 		showError_confirmPassword: false,
     errorMessage_confirmPassword: "",
@@ -26,7 +26,10 @@ Page({
     gender: "",
     errorMessage_gender: "请选择性别",
 
-    whatsup: ""
+    whatsup: "",
+    totalWords: 0,
+    autoSaveTimer: null,
+    isUpdated: false
   },
   checkPhone() {
     const phone = this.data.phone;
@@ -41,7 +44,7 @@ Page({
     else if (!phonePattern.test(phone)) {
       this.setData({
         showError_phone: true,
-        errorMessage_phone: "请输入正确的用户名"
+        errorMessage_phone: "请以手机号的形式指定用户名"
       });
       return false;
     } 
@@ -59,6 +62,15 @@ Page({
       this.setData({
         showError_password: true,
         errorMessage_password: "密码不能为空"
+      })
+      return false;
+    }
+    // 禁止苹果系统自动生成的密码格式：6-6-6，每段6位，数字或大小写字母不限
+    const applePasswordPattern = /^[A-Za-z0-9]{6}-[A-Za-z0-9]{6}-[A-Za-z0-9]{6}$/;
+    if(applePasswordPattern.test(this.data.password)){
+      this.setData({
+        showError_password: true,
+        errorMessage_password: "不要使用苹果系统自动生成的密码，请退出该页面重试"
       })
       return false;
     }
@@ -139,32 +151,36 @@ Page({
   },
   confirm(){
     if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword() && this.checkRealName() && this.checkNickName() && this.checkGender()){
-      let data = {
-        phone: this.data.phone,
-        password: this.data.password,
-        realName: this.data.realName,
-        nickName: this.data.nickName,
-        gender: this.data.gender,
-        whatsup: this.data.whatsup.trim()
-      };
-      request({
-        url: "/user/signup",
-        method: "POST",
-        data: data
-      }).then(res => {
-        console.log(res);
-        if(res.code !== "0"){
-          Toast(res.msg);
-        }
-        else{
-          Toast("注册成功");
-          setTimeout(() => {
-            wx.navigateBack({
-              url: '../index/index',
-            });
-          }, 2000);
-        }
-      })
+      this.performSignup();
     }
+  },
+  
+  performSignup(){
+    let data = {
+      phone: this.data.phone,
+      password: this.data.password,
+      realName: this.data.realName,
+      nickName: this.data.nickName,
+      gender: this.data.gender,
+      whatsup: this.data.whatsup.trim()
+    };
+    request({
+      url: "/user/signup",
+      method: "POST",
+      data: data
+    }).then(res => {
+      console.log(res);
+      if(res.code !== "0"){
+        Toast(res.msg);
+      }
+      else{
+        Toast("注册成功");
+        setTimeout(() => {
+          wx.navigateBack({
+            url: '../index/index',
+          });
+        }, 2000);
+      }
+    })
   }
 })

@@ -55,6 +55,11 @@ Page({
                 title: '创建成功',
               })
             }
+            else {
+              wx.showToast({
+                title: res.msg,
+              })
+            }
             wx.switchTab({
               url: '../myRoute/myRoute',
             })

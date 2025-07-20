@@ -6,6 +6,8 @@ Page({
     phone: "",
     showError_phone: false,
     errorMessage_phone: "",
+    showResult: false,
+    resultPassword: ""
   },
   checkPhone() {
     const phone = this.data.phone;
@@ -48,16 +50,26 @@ Page({
         data: data
       }).then(res => {
         if(res.code === "0"){
-          wx.showModal({
-            title: "密码查询",
-            content: this.data.phone + "的密码是" + res.data.password,
-            confirmColor: "#CFAFF9",
-          })
+          this.setData({
+            showResult: true,
+            resultPassword: res.data.password
+          });
         }
         else{
           Toast(res.msg);
         }
       })
     }
+  },
+  copyPassword() {
+    wx.setClipboardData({
+      data: this.data.resultPassword,
+      success: function() {
+        wx.showToast({
+          title: '已复制',
+          icon: 'success'
+        })
+      }
+    })
   }
 })

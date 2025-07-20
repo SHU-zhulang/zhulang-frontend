@@ -33,10 +33,13 @@ Page({
       }
     }).then(res => {
       console.log(res);
+      const genderWord = res.data.gender === '女' ? '她' : '他';
       wx.showModal({
         title: '天使与主人',
-        content: "你的主人是" + res.data.realName + "(" + res.data.nickName + ")",
+        content: `恭喜，抽到的主人是${res.data.realName}(${res.data.nickName})\n${genderWord}总爱说：${res.data.whatsup || "上大逐浪，不浪会死！"}`,
         confirmColor: "#CFAFF9",
+        confirmText: "膜拜大佬",
+        cancelText: "太激动了"
       })
     })
   },

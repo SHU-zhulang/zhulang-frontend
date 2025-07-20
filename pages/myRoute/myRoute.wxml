@@ -1,5 +1,5 @@
 <view style="margin: 10rpx;">
-  <van-button type="primary" color="var(--primary-color)" wx:if="{{ user.role === 1 || user.role === 2 }}" bind:click="manageRoute">管理线路</van-button>
+  <van-button type="primary" color="var(--primary-color)" wx:if="{{ user.role === 2 }}" bind:click="manageRoute">管理线路</van-button>
 </view>
 
 <view wx:if="{{ dataList.length === 0 }}" style="font-size: 60rpx; font-weight: bold; color: var(--primary-color); text-align: center; margin: 200rpx 0;">无</view>
