@@ -1,14 +1,24 @@
 <view class="container">
-  <view style="font-size: 60rpx; font-weight: bold; color: var(--primary-color);">上大逐浪</view>
+  <view style="font-size: 50rpx; font-weight: bold; color: var(--primary-color);" class="title-font">TIME FOR DEPARTURE</view>
   <view style="margin: 30rpx 0;">
     <van-field model:value="{{ phone }}" left-icon="user-o" placeholder="请输入用户名" error="{{ showError }}" error-message="{{ errorMessage }}" bindblur="checkPhone" />
-    <van-field model:value="{{ password }}" left-icon="lock" placeholder="请输入密码" error="{{ showError2 }}" error-message="{{ errorMessage2 }}" bindblur="checkPassword" type="password" bind:input="onPasswordInput" />
+    <van-field model:value="{{ password }}" left-icon="lock" placeholder="请输入密码" error="{{ showError2 }}" error-message="{{ errorMessage2 }}" bindblur="checkPassword" type="password" />
   </view>
   <van-toast id="van-toast" />
   <view style="display: flex; margin: 20rpx 0;">
-    <van-button type="primary" style="flex: 1; margin: 0 10rpx;" color="var(--primary-color)" plain bind:click="login">登录</van-button>
+    <van-button type="primary" style="flex: 1; margin: 0 10rpx;" color="var(--primary-color)" plain bind:click="login">
+      <view style="display: flex; align-items: center; justify-content: center;">
+        <text>登录</text>
+        <image src="/images/hike.png" style="width: 32rpx; height: 32rpx; margin-left: 8rpx;" mode="aspectFit"/>
+      </view>
+    </van-button>
 
-    <van-button type="primary" style="flex: 1; margin: 0 10rpx;" color="var(--primary-color)" bind:click="signup">注册</van-button>
+    <van-button type="primary" style="flex: 1; margin: 0 10rpx;" color="var(--primary-color)" bind:click="signup">
+      <view style="display: flex; align-items: center; justify-content: center;">
+        <text>注册</text>
+        <image src="/images/camp.png" style="width: 32rpx; height: 32rpx; margin-left: 8rpx;" mode="aspectFit"/>
+      </view>
+    </van-button>
   </view>
 
   <view style="text-align: right; margin: 0 10rpx;">

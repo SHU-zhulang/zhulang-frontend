@@ -32,7 +32,7 @@ Page({
     wx.showModal({
       title: "升级请求",
       content: "是否请求升级为领队账号",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({
@@ -61,7 +61,7 @@ Page({
     wx.showModal({
       title: "退出登录",
       content: "是否要退出登录",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           wx.reLaunch({

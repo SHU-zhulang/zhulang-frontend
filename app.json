@@ -19,7 +19,7 @@
   ],
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#CFAFF9",
+    "selectedColor": "#0b9b8a",
     "backgroundColor": "white",
     "borderStyle": "black",
     "list": [
@@ -56,7 +56,7 @@
     "van-uploader": "@vant/weapp/uploader/index"
   },
   "window": {
-    "navigationBarBackgroundColor": "#CFAFF9",
+    "navigationBarBackgroundColor": "#0b9b8a",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "上大逐浪"
   },

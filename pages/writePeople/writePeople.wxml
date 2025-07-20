@@ -8,13 +8,18 @@
     </view>
 
     <!-- 图片上传按钮及提示 -->
-    <view class="input" style="text-align: center;">
-      <image src="{{headImageUploaded ? '/images/kidaha-01.svg' : '/images/kidaha-11.svg'}}" style="width: 50px; height: 50px; margin: 5px auto; display: block;" mode="aspectFit"/>
-      <text style="color: var(--primary-color); font-size: 25rpx; font-weight: bold;">
-        {{headImageUploaded ? '你的靓照已C位出道，想换就再传一张吧！' : '你的人物贴还缺一张靓照哦～'}}
+    <view class="input" style="text-align: center; background: #f7f7fa; border-radius: 16rpx; padding: 30rpx 0; width: 80%; margin: 0 auto;">
+      <image src="{{headImageUploaded ? '/images/withPhoto.png' : '/images/withoutPhoto.png'}}" style="width: 50px; height: 50px; margin: 0 auto 10px;" mode="aspectFit"/>
+      <text style="color: var(--primary-color); font-weight: bold;">
+        {{headImageUploaded ? '你的靓照已C位出道，\n想换就再传一张吧！' : '你的人物贴还缺一张靓照哦～'}}
       </text>
-      <view style="width: 60%; margin: 25rpx auto 10rpx auto;">
-        <van-button type="primary" color="var(--primary-color)" block bindtap="uploadImage">上传一张你的美照</van-button>
+      <view style="width: 50%; margin: 25rpx auto 10rpx auto;">
+        <van-button type="primary" color="var(--primary-color)" block bindtap="uploadImage">
+          <view style="display: flex; align-items: center; justify-content: center;">
+            <text>上传照片</text>
+            <image src="/images/baby.png" style="width: 32rpx; height: 32rpx; margin-left: 8rpx;" mode="aspectFit"/>
+          </view>
+        </van-button>
       </view>
     </view>
     <view class="input" style="color: #ccc; font-size: 30rpx;">

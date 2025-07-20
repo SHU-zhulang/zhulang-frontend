@@ -6,7 +6,11 @@ Page({
     phone: "",
     showError_phone: false,
     errorMessage_phone: "",
+
+    // 是否展示密码查询结果
     showResult: false,
+
+    // 密码查询结果
     resultPassword: ""
   },
   checkPhone() {
@@ -66,7 +70,7 @@ Page({
       data: this.data.resultPassword,
       success: function() {
         wx.showToast({
-          title: '已复制',
+          title: '已复制，快去登录吧！',
           icon: 'success'
         })
       }

@@ -9,9 +9,19 @@
       <view slot="footer" style="display: flex; justify-content: flex-end;">
         <view style="margin-right: 10rpx;">
           <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" wx:if="{{ item.allocated === 0 }}" disabled>等待领队分配天使与主人</van-button>
-          <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="myMaster" wx:if="{{ item.allocated === 1 }}">查看我的主人</van-button>
+          <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="myMaster" wx:if="{{ item.allocated === 1 }}">
+            <view style="display: flex; align-items: center; justify-content: center;">
+              <image src="/images/angel.png" style="width: 32rpx; height: 32rpx; margin-left: 8rpx;" mode="aspectFit"/>
+              <text>查看我的小主人</text>
+            </view>
+          </van-button>
         </view>
-        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="writePeople">写人物贴</van-button>
+        <van-button type="info" color="var(--primary-color)" size="mini" data-item="{{ item }}" bind:click="writePeople">
+          <view style="display: flex; align-items: center; justify-content: center;">
+            <image src="/images/love.png" style="width: 32rpx; height: 32rpx; margin-left: 8rpx;" mode="aspectFit"/>
+            <text>写人物贴</text>
+          </view>
+        </van-button>
       </view>
     </van-card>
   </view>

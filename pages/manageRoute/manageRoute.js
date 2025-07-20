@@ -42,7 +42,7 @@ Page({
       content: "创建时是否区分男女生",
       confirmText: "区分",
       cancelText: "不区分",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({
@@ -89,7 +89,7 @@ Page({
     wx.showModal({
       title: "删除天使与主人",
       content: "是否删除本条线路的天使与主人分配",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({
@@ -128,7 +128,7 @@ Page({
     wx.showModal({
       title: "删除队伍",
       content: "是否删除队伍" + item.name,
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({

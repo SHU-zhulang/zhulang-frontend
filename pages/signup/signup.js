@@ -27,9 +27,6 @@ Page({
     errorMessage_gender: "请选择性别",
 
     whatsup: "",
-    totalWords: 0,
-    autoSaveTimer: null,
-    isUpdated: false
   },
   checkPhone() {
     const phone = this.data.phone;
@@ -151,6 +148,7 @@ Page({
   },
   confirm(){
     if(this.checkPhone() && this.checkPassword() && this.checkConfirmPassword() && this.checkRealName() && this.checkNickName() && this.checkGender()){
+      // 通过了所有的验证，发起请求进行注册
       this.performSignup();
     }
   },

@@ -5,10 +5,10 @@
       <van-field model:value="{{ phone }}" left-icon="user-o" placeholder="请输入用户名" error="{{ showError_phone }}" error-message="{{ errorMessage_phone }}" bindblur="checkPhone" required="true" />
     </view>
     <view class="input">
-      <van-field model:value="{{ password }}" left-icon="lock" placeholder="请设置密码" error="{{ showError_password }}" error-message="{{ errorMessage_password }}" bindblur="checkPassword" type="password" required="true" bind:input="onPasswordInput" />
+      <van-field model:value="{{ password }}" left-icon="lock" placeholder="请设置密码" error="{{ showError_password }}" error-message="{{ errorMessage_password }}" bindblur="checkPassword" type="password" required="true" />
     </view>
     <view class="input">
-      <van-field model:value="{{ confirmPassword }}" left-icon="lock" placeholder="请确认密码" error="{{ showError_confirmPassword }}" error-message="{{ errorMessage_confirmPassword }}" bindblur="checkConfirmPassword" type="password" required="true" bind:input="onConfirmPasswordInput" />
+      <van-field model:value="{{ confirmPassword }}" left-icon="lock" placeholder="请确认密码" error="{{ showError_confirmPassword }}" error-message="{{ errorMessage_confirmPassword }}" bindblur="checkConfirmPassword" type="password" required="true" />
     </view>
     <view class="input">
       <van-field model:value="{{ realName }}" left-icon="star-o" placeholder="请输入你的真名" error="{{ showError_realName }}" error-message="{{ errorMessage_realName }}" bindblur="checkRealName" required="true" />

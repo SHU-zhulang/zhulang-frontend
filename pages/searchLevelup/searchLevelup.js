@@ -20,7 +20,7 @@ Page({
     wx.showModal({
       title: "升级请求",
       content: "是否批准" + item.realName + "的账号升级请求",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({
@@ -49,7 +49,7 @@ Page({
     wx.showModal({
       title: "升级请求",
       content: "是否拒绝" + item.realName + "的账号升级请求",
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res){
         if(res.confirm){
           request({

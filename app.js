@@ -1,7 +1,11 @@
 App({
   globalData: {
     // 后台的请求地址
+    // 局域网，win在控制台输入ipconfig，ipv4后面可查看本次局域网ip
     // baseUrl: 'http://192.168.31.104:9090',
+    // 本地运行服务端
+    // baseUrl: 'http://localhost:9090',
+    // 线上
     baseUrl: 'https://www.zhulang.online:8080',
 
      // 默认设置为0，从createRoute进入addMember时设置为1

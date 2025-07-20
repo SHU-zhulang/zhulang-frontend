@@ -95,7 +95,7 @@ Page({
     wx.showModal({
       title: "打包导出",
       content: info,
-      confirmColor: "#CFAFF9",
+      confirmColor: "#0b9b8a",
       success(res) {
         if (res.confirm) {
           request({

@@ -1,5 +1,13 @@
 page{
-  --primary-color: #CFAFF9;
+  --primary-color: #f596a1;
+  font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* 全局标题字体样式 */
+.title-font {
+  font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2rpx;
 }
 
 .container{
@@ -13,4 +21,11 @@ page{
 
 .van-button--primary{
   width: 100%;
+}
+
+/* 所有按钮的通用字体样式 */
+.van-button {
+  font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
 }
